@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileBtn) {
         mobileBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -21,15 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
+            if (targetId === '#') return;
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
                 // Header offset
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
@@ -57,27 +57,38 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = form.querySelector('button');
             const originalText = btn.innerText;
-            
+
             btn.innerText = 'Sending...';
             btn.disabled = true;
-            
-            // Simulate API call
+
+            // Construct Mailto Link
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const subject = `Portfolio Contact from ${name}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+            // Create mailto link
+            const mailtoLink = `mailto:arshadattupurath23@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`; // No encoding for body to keep newlines simple or use encodeURIComponent for full safety
+
+            // Open default mail client
+            window.location.href = `mailto:arshadattupurath23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // UI Feedback
+            btn.innerText = 'Opening Mail App...';
+            btn.style.backgroundColor = '#22c55e';
+            btn.style.borderColor = '#22c55e';
+            btn.style.color = '#fff';
+
             setTimeout(() => {
-                btn.innerText = 'Message Sent!';
-                btn.style.backgroundColor = '#22c55e';
-                btn.style.borderColor = '#22c55e';
-                btn.style.color = '#fff';
-                
                 form.reset();
-                
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                    btn.style.backgroundColor = '';
-                    btn.style.borderColor = '';
-                    btn.style.color = '';
-                }, 3000);
-            }, 1500);
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = '';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 3000);
         });
     }
 
