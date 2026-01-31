@@ -50,47 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form Submittion Mock
+    // Form Submission Mock - Removed for Google Form integration
+    /*
     const form = document.getElementById('contactForm');
     if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalText = btn.innerText;
-
-            btn.innerText = 'Sending...';
-            btn.disabled = true;
-
-            // Construct Mailto Link
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            const subject = `Portfolio Contact from ${name}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-
-            // Create mailto link
-            const mailtoLink = `mailto:arshadattupurath23@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`; // No encoding for body to keep newlines simple or use encodeURIComponent for full safety
-
-            // Open default mail client
-            window.location.href = `mailto:arshadattupurath23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            // UI Feedback
-            btn.innerText = 'Opening Mail App...';
-            btn.style.backgroundColor = '#22c55e';
-            btn.style.borderColor = '#22c55e';
-            btn.style.color = '#fff';
-
-            setTimeout(() => {
-                form.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-                btn.style.backgroundColor = '';
-                btn.style.borderColor = '';
-                btn.style.color = '';
-            }, 3000);
-        });
+       // ... (removed to allow form submission)
     }
+    */
 
     // Intersection Observer for Fade-in Animations
     const observerOptions = {
