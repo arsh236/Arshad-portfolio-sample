@@ -711,6 +711,7 @@ footer {
 
   .cta-group {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .social-links {
