@@ -647,6 +647,21 @@ img {
   border-color: var(--primary);
 }
 
+.project-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.project-links .demo-link {
+  color: var(--accent);
+}
+
+.project-links .demo-link:hover i {
+  transform: translateX(3px) translateY(-3px);
+}
+
 /* Footer */
 footer {
   padding: 3rem 0;

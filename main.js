@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamic copyright year
+    const yearEl = document.getElementById('copyright-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
